@@ -1,0 +1,50 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid red;
+}
+.header{
+    padding: 0 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid green;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 100;
+}
+.content{
+    height: 100vh;
+}
+.footer{
+    padding: 0 1rem;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    background-color: #fff;
+}
+
+footer [src="./img/github.svg"],
+body [src="./img/icon.svg"] {
+    width: 2rem;
+    height: auto;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #000;
+}
