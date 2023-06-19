@@ -23,24 +23,44 @@ function displayBooks() {
         const card = document.createElement('div');
         card.classList.add('card');
         card.setAttribute('data-index', index);
+
+        const colorPane = document.createElement('div');
+        colorPane.classList.add('color-pane');
+
+        const cardContent = document.createElement('div');
+        cardContent.classList.add('card-content');
+
         const title = document.createElement('h2');
         title.textContent = book.title;
+
+        const author = document.createElement('h3');
+        author.textContent = "By: " + book.author;
 
         const description = document.createElement('div');
         description.classList.add('description');
 
-        const author = document.createElement('h3');
-        author.textContent = book.author;
         const pages = document.createElement('h3');
-        pages.textContent = book.pages;
-        const read = document.createElement('h3');
-        read.textContent = book.read ? 'read' : 'not read yet';
+        pages.textContent = "Pages: " + book.pages;
 
-        card.appendChild(title);
-        card.appendChild(description);
-        description.appendChild(author);
+        const span = document.createElement('span');
+
+        const read = document.createElement('h3');
+        span.textContent = book.read ? 'Read' : 'Not Read Yet';
+        if (span.textContent == "Read"){
+            span.style.color = "green";
+        } else {
+            span.style.color = "red";
+        }
+        // read.appendChild(span);
+        read.textContent = "Status: ";
+        read.appendChild(span);
+        cardContent.appendChild(title);
+        cardContent.appendChild(author);
+        cardContent.appendChild(description);
         description.appendChild(pages);
-        card.appendChild(read);
+        description.appendChild(read);
+        card.appendChild(colorPane);
+        card.appendChild(cardContent);
         booksShelf.appendChild(card);
     })
 }
