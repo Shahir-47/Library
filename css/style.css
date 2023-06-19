@@ -1,8 +1,27 @@
 .container {
-    width: 100vw;
-    height: 100vh;
+    flex: 1;
     border: 1px solid red;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+  
+
+
+h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+}
+
 .header{
     padding: 0 2rem;
     display: flex;
@@ -15,10 +34,9 @@
     background-color: #fff;
     z-index: 100;
 }
-.content{
-    height: 100vh;
-}
-.footer{
+
+
+footer{
     padding: 0 1rem;
     border: 1px solid green;
     display: flex;
@@ -29,8 +47,12 @@
     background-color: #fff;
 }
 
-footer [src="./img/github.svg"],
 body [src="./img/icon.svg"] {
+    width: 3rem;
+    height: auto;
+}
+
+footer [src="./img/github.svg"]{
     width: 2rem;
     height: auto;
 }
@@ -47,4 +69,43 @@ footer a {
     gap: 0.5rem;
     text-decoration: none;
     color: #000;
+}
+
+footer a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+footer a:focus [src="./img/github.svg"],
+footer a:hover [src="./img/github.svg"] {
+    filter: invert(0.5);
+}
+
+footer a:focus {
+    color: #3E75C3;
+}
+
+footer p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content;
+    padding: 1rem;
+    height: min-content;
+}
+
+.content .books{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 1rem;
+    padding: 1rem;
+    padding-top: 0.7rem;
+    justify-content: center;
 }
