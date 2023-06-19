@@ -14,10 +14,9 @@
         <div class="header">
             <div class="header__logo">
                 <img src="./img/icon.svg" alt="logo">
-            </div>
-            <div class="header__title">
                 <h1>My Library</h1>
             </div>
+            <button id="openFormButton">Add Book</button>
         </div>
 
         <div class="content">
@@ -32,5 +31,65 @@
         </footer>
 
     </div>
+
+    <!-- The form
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Add Book</h1>
+  
+            <label for="title"><b><Title>Title</Title></b></label>
+            <input type="text" placeholder="Enter Title" name="Title" required>
+  
+            <label for="author"><b>Author</b></label>
+            <input type="text" placeholder="Enter Author's name" name="author" required>
+
+            <label for="pages"><b>Pages</b></label>
+            <input type="pages" placeholder="Enter number of pages" name="pages" required>
+
+            <fieldset>
+                <legend>Have you read this book?</legend>
+                <label for="yes">Yes</label>
+                <input type="radio" name="read" id="yes" value="yes">
+                <label for="no">No</label>
+                <input type="radio" name="read" id="no" value="no">
+            </fieldset>
+
+            <button type="submit" class="btn">Add Book >></button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+        </form>
+    </div> -->
+
+    <div id="popupFormContainer">
+        <div id="popupForm">
+            <h2>New Book</h2>
+            <form>
+                <div class="titleBox">
+                    <label for="title"><b>Title</b></label>
+                    <input type="text" id="title" placeholder="Enter Title" name="Title" required>
+                </div>
+
+                <div class="authorBox">
+                    <label for="author"><b>Author</b></label>
+                    <input type="text" id="author" placeholder="Enter Author's name" name="author" required>
+                </div>
+
+                <div class="pagesBox">
+                    <label for="pages"><b>Number of Pages</b></label>
+                    <input type="pages" id="pages" placeholder="Enter number of pages" name="pages" required>
+                </div>
+
+                <fieldset>
+                    <legend>Have you read this book?</legend>
+                    <label for="yes">Yes</label>
+                    <input type="radio" name="read" id="yes" value="yes">
+                    <label for="no">No</label>
+                    <input type="radio" name="read" id="no" value="no">
+                </fieldset>
+            </form>
+            <button id="closeFormButton">Close</button>
+    </div>
+    </div>
+
 </body>
 </html>

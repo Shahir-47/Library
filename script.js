@@ -77,3 +77,12 @@ myLibrary.push(book3);
 myLibrary.push(book4);
 
 displayBooks();
+
+document.getElementById('openFormButton').addEventListener('click', function() {
+    document.getElementById('popupFormContainer').style.display = 'block';
+  });
+  
+  document.getElementById('closeFormButton').addEventListener('click', function() {
+    document.getElementById('popupFormContainer').style.display = 'none';
+  });
+  
