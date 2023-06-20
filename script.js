@@ -80,14 +80,18 @@ displayBooks();
 
 /*-------------------------------- FOR POP-UP FORM ONLY-------------------------------------------------*/
 
+const form = document.documentElement.querySelector('#addBookButton');
+form.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent the form from submitting
+});
 
 document.getElementById('openFormButton').addEventListener('click', function() {
     document.getElementById('popupFormContainer').style.display = 'block';
   });
   
-  document.getElementById('closeFormButton').addEventListener('click', function() {
-    document.getElementById('popupFormContainer').style.display = 'none';
-  });
+//   document.getElementById('closeFormButton').addEventListener('click', function() {
+//     document.getElementById('popupFormContainer').style.display = 'none';
+//   });
   
 let errorText = '';
 const input = document.querySelector('#pages');
@@ -104,17 +108,19 @@ const input = document.querySelector('#pages');
 
             if (/\D/.test(input.value)) {
                 console.log(/\D/.test(input.value));
-                input.setCustomValidity('NaN');
+                input.setCustomValidity('wrong');
                 console.log(input.checkValidity());
             }
             else {
                 input.setCustomValidity('');
-                console.log(input.checkValidity());
             }
             
-            if (input.checkValidity() === false && input.value !== '') {
-                    errorText = 'Invalid Phone Number';
-                }
+            if (input.validationMessage != '' && input.value !== '') {
+                errorText = 'Invalid Phone Number';
+            }
+            else {
+                errorText = '';
+            }
                 document.querySelector(`#${input.id}-error`).textContent = errorText;
                 document.querySelector(`#${input.id}-error`).style.color = 'red';
             });
