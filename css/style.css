@@ -360,8 +360,7 @@ label {
     gap: 0.5rem;
 }
 
-#addBookButton,
-#closeFormButton{
+#addBookButton{
     margin: 0;
 }
 
@@ -392,12 +391,32 @@ button:active {
 }
 
 
-#closeFormButton {
-    margin-top: 10px;
+#popupForm #closeFormButton {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-top-right-radius: 10px;
+    margin: 0;
     position: absolute;
     top: 0;
     right: 0;
-    /* transform: translateY(-1.5rem) scale(0.93) translateX(0%); */
+    width: 40px;
+    height: 40px;
+}
+
+#popupForm #closeFormButton:hover {
+    background-color: #dd2c00;
+}
+
+#closeFormButton img {
+    width: 32px;
+    height: auto;
+    cursor: pointer;
+}
+
+#closeFormButton:hover img {
+    filter: invert(1);
 }
   
 #openFormButton {
