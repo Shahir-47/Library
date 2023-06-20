@@ -67,22 +67,24 @@
                 <h2>New Book</h2>
             </div>
             <form>
-                <div class="titleBox">
+                <div class="normal-box titleBox">
                     <input type="text" id="title" placeholder="" name="Title" required>
                     <span class="tick">✔</span>
                     <label for="title"><b>Title</b></label>
                 </div>
 
-                <div class="authorBox">
+                <div class="normal-box authorBox">
                     <input type="text" id="author" placeholder="" name="author" required>
                     <span class="tick">✔</span>
                     <label for="author"><b>Author</b></label>
                 </div>
 
                 <div class="pagesBox">
-                    <input type="pages" id="pages" placeholder=" " name="pages" required>
-                    <span class="tick">✔</span>
-                    <label for="pages"><b>Number of Pages</b></label>
+                    <div class="unique-box">
+                        <input type="pages" id="pages" placeholder=" " name="pages" required>
+                        <span class="tick">✔</span>
+                        <label for="pages"><b>Number of Pages</b></label>
+                    </div>
                     <span class="error-msg" id="pages-error"></span>
                 </div>
 

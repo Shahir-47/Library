@@ -106,7 +106,7 @@ const input = document.querySelector('#pages');
             // Perform desired actions after finished typing
             console.log(input.checkValidity());
 
-            if (/\D/.test(input.value)) {
+            if (/\D/.test(input.value) || Number.isInteger(parseInt(input.value)) == false || input.value <= 0 || input.length >= Number.MAX_SAFE_INTEGER) {
                 console.log(/\D/.test(input.value));
                 input.setCustomValidity('wrong');
                 console.log(input.checkValidity());
@@ -116,7 +116,7 @@ const input = document.querySelector('#pages');
             }
             
             if (input.validationMessage != '' && input.value !== '') {
-                errorText = 'Invalid Phone Number';
+                errorText = '*Please enter a valid number of pages';
             }
             else {
                 errorText = '';

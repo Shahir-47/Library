@@ -254,7 +254,13 @@ form {
     gap: 1.5rem
 }
 
-form div {
+form .unique-box{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+form .normal-box {
     display: flex;
     gap: 0.5rem;
     padding-bottom: 1rem;
@@ -262,6 +268,19 @@ form div {
     padding-left: 0.5rem;
 }
 
+#pages-error {
+    min-height: 19px;
+    padding-left: 12px;
+    padding-top: 4px;
+}
+
+form .pagesBox {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-bottom: 1rem;
+}
 form div label {
     position: absolute;
     color: rgba(68, 68, 68, 0.6);
