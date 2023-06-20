@@ -80,48 +80,122 @@ displayBooks();
 
 /*-------------------------------- FOR POP-UP FORM ONLY-------------------------------------------------*/
 
-const form = document.documentElement.querySelector('#addBookButton');
-form.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent the form from submitting
-});
 
+// Method for validation check and adding a new new Bookto the library
+function validationCheck(e) {
+    let isFormValid = true;
+
+    e.preventDefault(); // Prevent the form from submitting
+    
+    // Validation check
+    const inputs = document.querySelectorAll('form .box input');
+        inputs.forEach(input => {
+            if (input.value == '' ) {
+                document.querySelector(`#${input.id}-error`).textContent = '*Please fill out this field';
+                document.querySelector(`#${input.id}-error`).style.color = 'red';
+                input.addEventListener('focus', () => {
+                    document.querySelector(`#${input.id}-error`).textContent = '';
+        
+                });
+                isFormValid = false
+            } else if (input.checkValidity() == false) {
+                document.querySelector(`#${input.id}-error`).textContent = '*Please enter a valid number of pages';
+                document.querySelector(`#${input.id}-error`).style.color = 'red';
+                isFormValid = false
+            }
+        });
+    
+    // If form is valid, add a new book to the library
+    if (isFormValid) {
+        const title = document.querySelector('#title').value;
+        const author = document.querySelector('#author').value;
+        const pages = document.querySelector('#pages').value;
+        const read = document.querySelector('input[name="read"]:checked');
+        const newBook = new Book(title, author, pages, read);
+        addBookToLibrary(newBook);
+        displayBooks();
+    }
+}
+
+// Method for real-time validation
+function realTimeValidation(input , sign){
+    let errorText = '';
+    console.log("Finished typing:", input.value);
+    // Perform desired actions after finished typing
+    console.log(input.checkValidity());
+
+    if (/\D/.test(input.value) || Number.isInteger(parseInt(input.value)) == false || input.value <= 0 || input.length >= Number.MAX_SAFE_INTEGER) {
+        console.log(/\D/.test(input.value));
+        input.setCustomValidity('wrong');
+        console.log(input.checkValidity());
+    }
+    else {
+        input.setCustomValidity('');
+    }
+    
+    if (input.validationMessage != '' && input.value !== '') {
+        errorText = '*Please enter a valid number of pages';
+        sign.textContent = '❌';
+        sign.style.cssText = 'color: red; transition: 0.5s ease-in-out;';
+    }
+    else {
+        errorText = '';
+        if (input.value == '') {
+            sign.style.color = 'transparent';
+        } else {
+            sign.textContent = '✔';
+            sign.style.color = 'green';
+        }
+    }
+        document.querySelector(`#${input.id}-error`).textContent = errorText;
+        document.querySelector(`#${input.id}-error`).style.color = 'red';
+        return errorText;
+}
+
+// Method for clearing error messages 
+function clearErrorMessages(input, sign) {
+    document.querySelector(`#${input.id}-error`).textContent = '';
+
+    input.addEventListener("focus", function() {
+        document.querySelector(`#${input.id}-error`).textContent = '';
+        sign.style.color = 'transparent';
+    });
+}
+
+function clearForm() {
+    const inputs = document.querySelectorAll('form .box input');
+    const sign = document.querySelector(`.unique-box span`);
+    inputs.forEach(input => {
+            input.value = '';
+            document.querySelector(`#${input.id}-error`).textContent = '';
+            sign.style.color = 'transparent';
+
+    });
+}
+//-------------------------Event Listeners for the pop-up form--------------------------------------------
+
+// Event Listener for opening the form
 document.getElementById('openFormButton').addEventListener('click', function() {
     document.getElementById('popupFormContainer').style.display = 'block';
-  });
-  
-//   document.getElementById('closeFormButton').addEventListener('click', function() {
-//     document.getElementById('popupFormContainer').style.display = 'none';
-//   });
-  
-let errorText = '';
+});
+
+// Event Listener for closing the form
+document.getElementById('closeFormButton').addEventListener('click', function() {
+    clearForm();
+    document.getElementById('popupFormContainer').style.display = 'none';
+});
+
+// Event Listener for submitting the form
+document.documentElement.querySelector('#addBookButton').addEventListener('click', validationCheck);
+
+
+// Event Listener for clearing error messages when the user is typing and then...
+// do validation check when the user is done typing
 const input = document.querySelector('#pages');
+const sign = document.querySelector(`.unique-box span`);
     input.addEventListener('keyup', () => {
-        document.querySelector(`#${input.id}-error`).textContent = '';
-        input.addEventListener("focus", function() {
-            document.querySelector(`#${input.id}-error`).textContent = '';
+        clearErrorMessages(input, sign);
+        input.addEventListener('blur', () => {
+            realTimeValidation(input, sign);
         });
-
-        input.addEventListener("blur", function() {
-            console.log("Finished typing:", input.value);
-            // Perform desired actions after finished typing
-            console.log(input.checkValidity());
-
-            if (/\D/.test(input.value) || Number.isInteger(parseInt(input.value)) == false || input.value <= 0 || input.length >= Number.MAX_SAFE_INTEGER) {
-                console.log(/\D/.test(input.value));
-                input.setCustomValidity('wrong');
-                console.log(input.checkValidity());
-            }
-            else {
-                input.setCustomValidity('');
-            }
-            
-            if (input.validationMessage != '' && input.value !== '') {
-                errorText = '*Please enter a valid number of pages';
-            }
-            else {
-                errorText = '';
-            }
-                document.querySelector(`#${input.id}-error`).textContent = errorText;
-                document.querySelector(`#${input.id}-error`).style.color = 'red';
-            });
     });

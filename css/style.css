@@ -254,32 +254,27 @@ form {
     gap: 1.5rem
 }
 
-form .unique-box{
+form .box{
     display: flex;
     gap: 0.5rem;
-    align-items: center;
-    padding-left: 0.5rem;
-}
-form .normal-box {
-    display: flex;
-    gap: 0.5rem;
-    padding-bottom: 1rem;
     align-items: center;
     padding-left: 0.5rem;
 }
 
-#pages-error {
+
+.error-msg {
     min-height: 19px;
     padding-left: 12px;
     padding-top: 4px;
 }
 
+form .titleBox,
+form .authorBox,
 form .pagesBox {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    padding-bottom: 1rem;
 }
 form div label {
     position: absolute;
@@ -288,6 +283,12 @@ form div label {
 }
 
 form div input:focus ~ label {
+    transition: 0.4s;
+    transform: translateY(-1.8rem) scale(0.93) translateX(-10%);
+    color: #000000;
+}
+
+input:not(:placeholder-shown) ~ label{
     transition: 0.4s;
     transform: translateY(-1.8rem) scale(0.93) translateX(-10%);
     color: #000000;
@@ -326,14 +327,24 @@ input[type]:not(:placeholder-shown):not(:focus):valid{
     border-bottom: 2px solid #31ad69;    
 }
 
-input[type]:not(:placeholder-shown):not(:focus):valid+.tick{
-    display: block;
+input[type]:not(:placeholder-shown):not(:focus):invalid{
+    border-bottom: 2px solid red;
+}
+
+form .normal-box input[type]:not(:placeholder-shown):not(:focus):valid+.tick{
+    color: green;
 }
 
 
+label {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
 .tick {
-    display: none;
-    color: #31ad69;
+    color: transparent;
     font-size: 20px;
     transition: all .5s ease-in;
     -webkit-user-select: none; /* Safari */
@@ -381,9 +392,12 @@ button:active {
 }
 
 
-
 #closeFormButton {
     margin-top: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* transform: translateY(-1.5rem) scale(0.93) translateX(0%); */
 }
   
 #openFormButton {

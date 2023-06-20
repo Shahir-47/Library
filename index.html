@@ -62,25 +62,32 @@
 
     <div id="popupFormContainer">
         <div id="popupForm">
+            <button id="closeFormButton">Close</button>
             <div class="popupLogo">
                 <img src="./img/book.svg" alt="Book logo">
                 <h2>New Book</h2>
             </div>
             <form>
                 <div class="normal-box titleBox">
-                    <input type="text" id="title" placeholder="" name="Title" required>
-                    <span class="tick">✔</span>
-                    <label for="title"><b>Title</b></label>
+                    <div class="box">
+                        <input type="text" id="title" placeholder=" " name="Title" required>
+                        <span class="tick">✔</span>
+                        <label for="title"><b>Title</b></label>
+                    </div>
+                    <span class="error-msg" id="title-error"></span>
                 </div>
 
                 <div class="normal-box authorBox">
-                    <input type="text" id="author" placeholder="" name="author" required>
-                    <span class="tick">✔</span>
-                    <label for="author"><b>Author</b></label>
+                    <div class="box">
+                        <input type="text" id="author" placeholder=" " name="author" required>
+                        <span class="tick">✔</span>
+                        <label for="author"><b>Author</b></label>
+                    </div>
+                    <span class="error-msg" id="author-error"></span>
                 </div>
 
                 <div class="pagesBox">
-                    <div class="unique-box">
+                    <div class="unique-box box">
                         <input type="pages" id="pages" placeholder=" " name="pages" required>
                         <span class="tick">✔</span>
                         <label for="pages"><b>Number of Pages</b></label>
@@ -97,7 +104,6 @@
                 </fieldset>
             </form>
             <div class="btn">
-                <!-- <button id="closeFormButton">Close</button> -->
                 <button id="addBookButton">Add Book</button>
             </div>
     </div>
