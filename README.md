@@ -1,5 +1,5 @@
 # myLibrary Project
-![myLibrary Logo](./img/book.svg)
+<img src="./img/book.svg" alt="myLibrary Logo" width="200px">
 
 myLibrary is a web application that allows users to create and manage their personal library. Users can add books to their library, specifying the book's title, author, number of pages, and whether they have read the book or not. The application provides a user-friendly interface for organizing and tracking books in the library.
 
