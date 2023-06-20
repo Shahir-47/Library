@@ -7,11 +7,6 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
-Book.prototype.info = function() {
-    this.read = this.read ? 'read' : 'not read yet'
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
-}
-
 function addBookToLibrary(Book) {
     myLibrary.push(Book);
 }
@@ -45,25 +40,55 @@ function displayBooks() {
         const span = document.createElement('span');
 
         const read = document.createElement('h3');
+        book.read === 'yes' ? 'Read' : 'Not Read Yet';
         span.textContent = book.read ? 'Read' : 'Not Read Yet';
         if (span.textContent == "Read"){
             span.style.color = "green";
         } else {
             span.style.color = "red";
         }
-        // read.appendChild(span);
+
+        const statusBtn = document.createElement('div');
+        statusBtn.classList.add('status-btn');
+
+        const readButton = document.createElement('button');
+        if (span.textContent == "Read"){
+            readButton.classList.add('unread-button');
+            readButton.textContent = 'Unread';
+        } else {
+            readButton.classList.add('read-button');
+            readButton.textContent = 'Read';
+        }
+
+        readButton.addEventListener('click', () => {
+            book.read = !book.read;
+            displayBooks();
+        });
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+            myLibrary.splice(index, 1);
+            displayBooks();
+        });
+        
         read.textContent = "Status: ";
+        statusBtn.appendChild(readButton);
+        statusBtn.appendChild(deleteButton);
         read.appendChild(span);
         cardContent.appendChild(title);
         cardContent.appendChild(author);
         cardContent.appendChild(description);
         description.appendChild(pages);
         description.appendChild(read);
+        cardContent.appendChild(statusBtn);
         card.appendChild(colorPane);
         card.appendChild(cardContent);
         booksShelf.appendChild(card);
     })
 }
+
 
 let book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 218, true);
 let book2 = new Book("To Kill a Mockingbird", "Harper Lee", 324, true);
@@ -110,10 +135,13 @@ function validationCheck(e) {
         const title = document.querySelector('#title').value;
         const author = document.querySelector('#author').value;
         const pages = document.querySelector('#pages').value;
-        const read = document.querySelector('input[name="read"]:checked');
+        const read = document.querySelector('input[name="read"]:checked').value === 'yes' ? true : false;
+        console.log(read);
         const newBook = new Book(title, author, pages, read);
         addBookToLibrary(newBook);
         displayBooks();
+        clearForm();
+        document.getElementById('popupFormContainer').style.display = 'none';
     }
 }
 
@@ -183,6 +211,11 @@ document.getElementById('openFormButton').addEventListener('click', function() {
 document.getElementById('closeFormButton').addEventListener('click', function() {
     clearForm();
     document.getElementById('popupFormContainer').style.display = 'none';
+});
+
+// Event Listener for clearing the form
+document.getElementById('clearButton').addEventListener('click', function() {
+    clearForm();
 });
 
 // Event Listener for submitting the form

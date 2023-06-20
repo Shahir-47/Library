@@ -32,34 +32,6 @@
 
     </div>
 
-    <!-- The form
-    <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
-            <h1>Add Book</h1>
-  
-            <label for="title"><b><Title>Title</Title></b></label>
-            <input type="text" placeholder="Enter Title" name="Title" required>
-  
-            <label for="author"><b>Author</b></label>
-            <input type="text" placeholder="Enter Author's name" name="author" required>
-
-            <label for="pages"><b>Pages</b></label>
-            <input type="pages" placeholder="Enter number of pages" name="pages" required>
-
-            <fieldset>
-                <legend>Have you read this book?</legend>
-                <label for="yes">Yes</label>
-                <input type="radio" name="read" id="yes" value="yes">
-                <label for="no">No</label>
-                <input type="radio" name="read" id="no" value="no">
-            </fieldset>
-
-            <button type="submit" class="btn">Add Book >></button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-
-        </form>
-    </div> -->
-
     <div id="popupFormContainer">
         <div id="popupForm">
             <button id="closeFormButton"><img src="./img/close.svg" alt="Close Button"></button>
@@ -97,13 +69,16 @@
 
                 <fieldset>
                     <legend>Have you read this book?</legend>
-                    <label for="yes">Yes</label>
-                    <input type="radio" name="read" id="yes" value="yes" required>
-                    <label for="no">No</label>
-                    <input type="radio" name="read" id="no" value="no" checked>
+                    <div class="radio">
+                        <input type="radio" name="read" id="yes" value="yes" required>
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="read" id="no" value="no" checked>
+                        <label for="no">No</label>
+                    </div>
                 </fieldset>
             </form>
             <div class="btn">
+                <button id="clearButton">Clear Form</button>
                 <button id="addBookButton">Add Book</button>
             </div>
     </div>
