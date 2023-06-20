@@ -207,14 +207,14 @@ button{
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
-  }
+}
   
-  #popupForm {
+#popupForm {
     border: 6px outset rgba(28,110,164,0.72);
     -webkit-box-shadow: 8px 6px 14px 0px rgba(0,0,0,0.69); 
     box-shadow: 8px 6px 14px 0px rgba(0,0,0,0.69);
     display: grid;
-    grid-template-rows: min-content 1fr min-content;
+    grid-template-rows: min-content max-content min-content;
     align-items: stretch;
     position: absolute;
     gap: 1rem;
@@ -226,45 +226,148 @@ button{
     width: 300px;
     height: 500px;
     border-radius: 15px;
-  }
+}
 
-  .popupLogo {
+.popupLogo {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-  }
+}
 
-  #popupForm img {
+#popupForm img {
     width: 4rem;
     height: auto;
-  }
+}
 
-  #popupForm h2 {
+#popupForm h2 {
     font-size: 2rem;
     font-weight: 900;
     color: #000;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-  }
+}
 
-  form {
+form {
     display: grid;
     grid-template-rows: repeat(4, min-content);
-    gap: 2rem
-  }
+    gap: 1.5rem
+}
 
-  form div {
+form div {
     display: flex;
-    flex-direction: column;
     gap: 0.5rem;
-  }
-  
-  #closeFormButton {
+    padding-bottom: 1rem;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+
+form div label {
+    position: absolute;
+    color: rgba(68, 68, 68, 0.6);
+    padding: 10px;
+}
+
+form div input:focus ~ label {
+    transition: 0.4s;
+    transform: translateY(-1.8rem) scale(0.93) translateX(-10%);
+    color: #000000;
+}
+
+form div input {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    height: 20px;
+    border-radius: 4px;
+    border: 0;
+    border-bottom: 2px solid #000000;
+    padding: 6px 6px 6px 10px;
+    margin-top: 5px;
+    background-color: #dddcdcbc;
+    transition: all .5s ease-in;
+    color: #000000;
+    width: 85%;
+}
+
+form div input:focus {
+    border-bottom: 2px solid #317dad;
+    outline: none;
+}
+
+form div input:placeholder-shown {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
+input[type]:not(:placeholder-shown):not(:focus):valid{
+    border-bottom: 2px solid #31ad69;    
+}
+
+input[type]:not(:placeholder-shown):not(:focus):valid+.tick{
+    display: block;
+}
+
+
+.tick {
+    display: none;
+    color: #31ad69;
+    font-size: 20px;
+    transition: all .5s ease-in;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+#addBookButton,
+#closeFormButton{
+    margin: 0;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    background-color: #317dad;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    transition: all .5s ease-in;
+}
+
+button:hover {
+    background-color: #3e75c3;
+}
+
+button:focus {
+    background-color: #3e75c3;
+    outline: none;
+}
+
+button:active {
+    background-color: #3e75c3;
+    transform: scale(0.95);
+}
+
+
+
+#closeFormButton {
     margin-top: 10px;
-  }
+}
   
-  #openFormButton {
+#openFormButton {
     margin-top: 20px;
-  }
+}
   

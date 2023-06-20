@@ -68,29 +68,36 @@
             </div>
             <form>
                 <div class="titleBox">
+                    <input type="text" id="title" placeholder="" name="Title" required>
+                    <span class="tick">✔</span>
                     <label for="title"><b>Title</b></label>
-                    <input type="text" id="title" placeholder="Enter Title" name="Title" required>
                 </div>
 
                 <div class="authorBox">
+                    <input type="text" id="author" placeholder="" name="author" required>
+                    <span class="tick">✔</span>
                     <label for="author"><b>Author</b></label>
-                    <input type="text" id="author" placeholder="Enter Author's name" name="author" required>
                 </div>
 
                 <div class="pagesBox">
+                    <input type="pages" id="pages" placeholder=" " name="pages" required>
+                    <span class="tick">✔</span>
                     <label for="pages"><b>Number of Pages</b></label>
-                    <input type="pages" id="pages" placeholder="Enter number of pages" name="pages" required>
+                    <span class="error-msg" id="pages-error"></span>
                 </div>
 
                 <fieldset>
                     <legend>Have you read this book?</legend>
                     <label for="yes">Yes</label>
-                    <input type="radio" name="read" id="yes" value="yes">
+                    <input type="radio" name="read" id="yes" value="yes" required>
                     <label for="no">No</label>
-                    <input type="radio" name="read" id="no" value="no">
+                    <input type="radio" name="read" id="no" value="no" checked>
                 </fieldset>
             </form>
-            <button id="closeFormButton">Close</button>
+            <div class="btn">
+                <button id="closeFormButton">Close</button>
+                <button id="addBookButton">Add Book</button>
+            </div>
     </div>
     </div>
 
