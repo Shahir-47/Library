@@ -29,7 +29,7 @@ You can access the myLibrary online at: [https://shahir-47.github.io/Library/](h
 Contributions to myLibrary are welcome! If you find any issues or would like to add new features, please feel free to open an issue or submit a pull request.
 
 ## License
-The project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 For any questions or inquiries, please contact [ahmeds@dickinson.edu].
